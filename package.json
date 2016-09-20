@@ -1,0 +1,35 @@
+{
+  "name": "atlas-parser",
+  "version": "1.0.0",
+  "description": "split spine atlas(libgdx atlas format) into image pieces.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koalaylj/atlas-parser.git"
+  },
+  "keywords": [
+    "libgdx",
+    "atlas",
+    "spine",
+    "decompile",
+    "image",
+    "cut"
+  ],
+  "author": "yulijun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koalaylj/atlas-parser/issues"
+  },
+  "homepage": "https://github.com/koalaylj/atlas-parser#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "electron": "^1.4.0",
+    "express": "^4.14.0",
+    "pixi-spine": "^1.0.28",
+    "pixi.js": "^3.0.11"
+  }
+}

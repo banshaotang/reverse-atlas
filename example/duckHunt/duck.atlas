@@ -1,0 +1,139 @@
+
+duck.png
+size: 868,150
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Duck
+  rotate: true
+  xy: 2, 2
+  size: 146, 225
+  orig: 146, 225
+  offset: 0, 0
+  index: -1
+DuckLight
+  rotate: true
+  xy: 229, 2
+  size: 146, 225
+  orig: 146, 225
+  offset: 0, 0
+  index: -1
+duckDurk
+  rotate: true
+  xy: 456, 2
+  size: 146, 225
+  orig: 146, 225
+  offset: 0, 0
+  index: -1
+lightRound
+  rotate: false
+  xy: 756, 19
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+stars/02_00040
+  rotate: false
+  xy: 756, 9
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
+stars/02_00041
+  rotate: false
+  xy: 756, 9
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
+stars/02_00042
+  rotate: false
+  xy: 823, 126
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00043
+  rotate: false
+  xy: 823, 126
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00044
+  rotate: false
+  xy: 823, 126
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00045
+  rotate: false
+  xy: 819, 34
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+stars/02_00046
+  rotate: false
+  xy: 819, 34
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+stars/02_00047
+  rotate: false
+  xy: 756, 82
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00048
+  rotate: false
+  xy: 756, 82
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00049
+  rotate: false
+  xy: 756, 82
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00050
+  rotate: false
+  xy: 683, 76
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00051
+  rotate: false
+  xy: 683, 76
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00052
+  rotate: false
+  xy: 683, 2
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00053
+  rotate: false
+  xy: 683, 2
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00054
+  rotate: false
+  xy: 683, 2
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1

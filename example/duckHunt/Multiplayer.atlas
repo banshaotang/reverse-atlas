@@ -1,0 +1,146 @@
+
+Multiplayer.png
+size: 560,764
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/Basic Shapes 26_00002
+  rotate: false
+  xy: 372, 573
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00004
+  rotate: false
+  xy: 174, 551
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00006
+  rotate: true
+  xy: 174, 565
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00008
+  rotate: true
+  xy: 128, 38
+  size: 27, 26
+  orig: 27, 26
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00010
+  rotate: false
+  xy: 2, 2
+  size: 61, 63
+  orig: 61, 63
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00012
+  rotate: true
+  xy: 411, 118
+  size: 157, 146
+  orig: 157, 146
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00014
+  rotate: false
+  xy: 2, 256
+  size: 165, 158
+  orig: 165, 158
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00016
+  rotate: true
+  xy: 260, 118
+  size: 157, 149
+  orig: 157, 149
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00018
+  rotate: false
+  xy: 2, 416
+  size: 170, 164
+  orig: 170, 164
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00020
+  rotate: false
+  xy: 383, 406
+  size: 174, 168
+  orig: 174, 168
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00022
+  rotate: false
+  xy: 194, 406
+  size: 176, 176
+  orig: 176, 176
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00024
+  rotate: true
+  xy: 384, 576
+  size: 186, 174
+  orig: 186, 174
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00026
+  rotate: false
+  xy: 194, 584
+  size: 188, 178
+  orig: 188, 178
+  offset: 0, 0
+  index: -1
+images/Basic Shapes 26_00028
+  rotate: false
+  xy: 2, 582
+  size: 190, 180
+  orig: 190, 180
+  offset: 0, 0
+  index: -1
+lightRound
+  rotate: false
+  xy: 65, 4
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+multi_window
+  rotate: false
+  xy: 260, 45
+  size: 284, 71
+  orig: 284, 71
+  offset: 0, 0
+  index: -1
+x1
+  rotate: true
+  xy: 2, 67
+  size: 187, 127
+  orig: 187, 127
+  offset: 0, 0
+  index: -1
+x2
+  rotate: true
+  xy: 131, 67
+  size: 187, 127
+  orig: 187, 127
+  offset: 0, 0
+  index: -1
+x3
+  rotate: false
+  xy: 169, 277
+  size: 187, 127
+  orig: 187, 127
+  offset: 0, 0
+  index: -1
+x4
+  rotate: false
+  xy: 358, 277
+  size: 187, 127
+  orig: 187, 127
+  offset: 0, 0
+  index: -1

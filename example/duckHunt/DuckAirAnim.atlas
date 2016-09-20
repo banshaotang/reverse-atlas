@@ -1,0 +1,13 @@
+
+DuckAirAnim.png
+size: 185,335
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+duck_air
+  rotate: false
+  xy: 2, 2
+  size: 181, 331
+  orig: 181, 331
+  offset: 0, 0
+  index: -1
