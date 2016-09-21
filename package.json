@@ -1,15 +1,15 @@
 {
-  "name": "atlas-parser",
+  "name": "reverse-atlas",
   "version": "1.0.0",
-  "description": "split spine atlas(libgdx atlas format) into image pieces.",
-  "main": "index.js",
+  "description": "cut spine atlas(libgdx atlas format) into slices.",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koalaylj/atlas-parser.git"
+    "url": "git+https://github.com/koalaylj/reverse-atlas.git"
   },
   "keywords": [
     "libgdx",
@@ -22,9 +22,9 @@
   "author": "yulijun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/koalaylj/atlas-parser/issues"
+    "url": "https://github.com/koalaylj/reverse-atlas/issues"
   },
-  "homepage": "https://github.com/koalaylj/atlas-parser#readme",
+  "homepage": "https://github.com/koalaylj/reverse-atlas#readme",
   "dependencies": {
     "async": "^2.0.1",
     "electron": "^1.4.0",

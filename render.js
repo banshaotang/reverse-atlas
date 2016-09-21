@@ -3,10 +3,52 @@ const path = require('path');
 const glob = require('glob');
 const mkdirp = require('mkdirp');
 const async = require('async');
-const spine = require('./spine-parser');
+const datax = require('./app/datax');
 
-// let _imageContainer;
-// let _canvasContainer;
+function loadImages(pages, cb) {
+
+  let images = new Map();
+
+  let index = 0;
+
+  //create images list for each atlas
+  pages.forEach((page, name) => {
+    let img = new Image();
+    images.set(name, img);
+    img.crossOrigin = 'Anonymous';
+    img.onload = function () {
+      index++;
+      if (index === pages.size) {
+        cb(images);
+      }
+    };
+
+    //.png file is in the same directory with .atlas file.
+    img.src = path.join(page.dir, name);
+  });
+}
+
+//get image data from canvas and save to file.
+function save(file, canvas, cb) {
+  let base64Data = canvas.toDataURL('image/png').replace(/^data:image\/png;base64,/, "");
+  let dir = path.parse(file).dir;
+  mkdirp(dir, function (err) {
+    if (err) {
+      console.error(err);
+      cb();
+    } else {
+      fs.writeFile(file, base64Data, 'base64', function (err) {
+        if (err) {
+          console.log("save [%s] error %s", file, err);
+        } else {
+          console.log("extract ---> ", file);
+        }
+        cb();
+      });
+    }
+
+  });
+}
 
 function crop(image, region) {
   let canvas = document.createElement('canvas');
@@ -18,143 +60,78 @@ function crop(image, region) {
   return canvas;
 }
 
-// function save(file, dataUrl) {
-//   let base64Data = dataUrl.replace(/^data:image\/png;base64,/, "");
-//   let dir = path.parse(file).dir;
-//   mkdirp(dir, function (err) {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       fs.writeFile(file, base64Data, 'base64', function (err) {
-//         if (err) {
-//           console.log("save [%s] error %s", file, err);
-//         } else {
-//           console.log("saved", file);
-//         }
-//       });
-//     }
-//   });
-// }
-
 function parse(src, dest) {
 
-  let srcDir = path.parse(src).dir.replace('/**', '');
-
   console.log("crop images from %s to %s", src, dest);
+
+  let srcDir = path.parse(src).dir.replace('/**', '');
 
   glob(src, function (err, files) {
 
     files.forEach(function (file, i) {
 
-      //read xxx.atlas file
-      fs.readFile(file, 'utf8', (err, data) => {
-        if (err) {
-          throw err;
-        }
+      /** path.parse();
+      ┌─────────────────────┬────────────┐
+      │          dir        │    base    │
+      ├──────┬              ├──────┬─────┤
+      │ root │              │ name │ ext │
+      " C:\      path\dir   \ file  .txt "
+      └──────┴──────────────┴──────┴─────┘
+      */
 
-        /** path.parse();
-        ┌─────────────────────┬────────────┐
-        │          dir        │    base    │
-        ├──────┬              ├──────┬─────┤
-        │ root │              │ name │ ext │
-        " C:\      path\dir   \ file  .txt "
-        └──────┴──────────────┴──────┴─────┘
-        */
+      let atlas = datax.loadSpine(file);
+      let parsedPath = path.parse(file);
 
-        let atlasList = spine.parseAtlas(data);
-        let parsedPath = path.parse(file);
-        let outputDir = path.join(dest, parsedPath.dir.replace(srcDir, ''));
+      //keep output sub directory the same as the source.
+      // let outputDir = path.join(dest, parsedPath.dir.replace(srcDir, ''));
 
-        console.log(i, file);
+      console.log(i, file);
 
-        async.waterfall([
+      async.waterfall([
 
           function (next) {
-
-            let images = new Map();
-
-            // while (_imageContainer.firstChild) {
-            //   _imageContainer.removeChild(_imageContainer.firstChild);
-            // }
-
-            //create images list for each atlas
-            atlasList.pages.forEach((page, i) => {
-              let img = new Image();
-              images.set(page.name, img);
-              img.crossOrigin = 'Anonymous';
-              img.onload = function () {
-                if (i === atlasList.pages.length - 1) {
-                  next(null, images);
-                }
-              };
-              img.src = path.join(parsedPath.dir, page.name);
-            });
+          loadImages(atlas.pages, (images) => {
+            next(null, images);
+          });
           },
 
           function (images, next) {
 
-            // let canvasList = new Map();
+          //get slices from the atlas
+          atlas.regions.forEach((region, key) => {
 
-            //crop image
-            atlasList.regions.forEach((region, i) => {
+            let img = images.get(region.page);
 
-              let atlas = images.get(region.page.name);
+            //draw image to canvas
+            let canvas = crop(img, region);
 
-              //draw image to canvas
-              let canvas = crop(atlas, {
-                x: region.x,
-                y: region.y,
-                w: region.rotate ? region.height : region.width,
-                h: region.rotate ? region.width : region.height
-              });
+            //keep sub dir the same as the src.
+            let subDir = parsedPath.dir.replace(srcDir, '');
 
-              // _canvasContainer.appendChild(canvas);
+            let destFile = path.join(dest, subDir, parsedPath.name + '_' + region.name + ".png");
 
-              let outputFileName = parsedPath.name + '_' + region.name.replace('/', '_') + '.png';
-              // canvasList.set(outputFileName, canvas);
+            let index = 0;
 
-              let outputPath = path.join(outputDir, outputFileName);
-
-              //get image data from canvas and save to file
-              let base64Data = canvas.toDataURL('image/png').replace(/^data:image\/png;base64,/, "");
-              let dir = path.parse(outputPath).dir;
-              mkdirp(dir, function (err) {
-                if (err) {
-                  console.error(err);
-                  next(null);
-                } else {
-                  fs.writeFile(outputPath, base64Data, 'base64', function (err) {
-                    if (err) {
-                      console.log("save [%s] error %s", outputPath, err);
-                    } else {
-                      console.log("saved", outputPath);
-                    }
-                    if (i === atlasList.regions.length - 1) {
-                      next(null);
-                    }
-                  });
-                }
-              });
-
+            save(destFile, canvas, () => {
+              index++;
+              if (index === atlas.regions.size) {
+                next(null);
+              }
             });
+
+          });
           },
 
           function (next) {
-            // while (_canvasContainer.firstChild) {
-            //   _canvasContainer.removeChild(_canvasContainer.firstChild);
-            // }
-            next(null);
+          console.log("----------------------------------------");
+          next(null);
           }
       ], function (err) {});
-      });
     });
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  // _imageContainer = document.getElementById('imageContainer');
-  // _canvasContainer = document.getElementById('canvasContainer');
 
   let srcPath = document.getElementById('src');
   let destPath = document.getElementById('dest');

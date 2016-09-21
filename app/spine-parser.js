@@ -1,3 +1,6 @@
+/**
+ * spine atlas parser.
+ */
 let spine = {};
 
 spine.Atlas = function (atlasText) {
@@ -234,11 +237,10 @@ spine.AtlasReader.prototype = {
 
 module.exports = exports = {
 
-
   /**
-   * [parseAtlas description]
-   * @param  {[type]} atlasText [description]
-   * @return
+   * convert spine atlas to json format
+   * @param  {[string]} atlasText [.atlas file raw text].
+   * @return json object of atlas text.
    *
     page:{
       name: 'duck.png',
@@ -276,7 +278,6 @@ module.exports = exports = {
       offsetX: 0,
       offsetY: 0,
       index: -1 }
-
    */
   parseAtlas: function (atlasText) {
     let parsedAtlas = new spine.Atlas(atlasText);

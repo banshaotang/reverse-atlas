@@ -1,2 +1,5 @@
 # nodejs
 node_modules/
+
+# MAC
+.DS_Store
