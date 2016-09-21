@@ -1,0 +1,20 @@
+
+lampIdle2.png
+size: 608,65
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Lamps1
+  rotate: true
+  xy: 2, 22
+  size: 41, 541
+  orig: 41, 541
+  offset: 0, 0
+  index: -1
+lightRound
+  rotate: false
+  xy: 545, 2
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1

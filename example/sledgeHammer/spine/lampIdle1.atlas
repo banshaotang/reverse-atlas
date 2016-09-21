@@ -1,0 +1,13 @@
+
+lampIdle1.png
+size: 17,16
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light_active
+  rotate: false
+  xy: 2, 2
+  size: 13, 11
+  orig: 13, 11
+  offset: 0, 0
+  index: -1

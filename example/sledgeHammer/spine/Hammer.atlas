@@ -1,0 +1,230 @@
+
+Hammer.png
+size: 1285,482
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bang
+  rotate: false
+  xy: 906, 146
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Bang2
+  rotate: false
+  xy: 1108, 246
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+BtnBG
+  rotate: false
+  xy: 461, 2
+  size: 377, 76
+  orig: 377, 76
+  offset: 0, 0
+  index: -1
+BtnBorder
+  rotate: true
+  xy: 846, 85
+  size: 395, 58
+  orig: 395, 58
+  offset: 0, 0
+  index: -1
+Hammer
+  rotate: true
+  xy: 248, 72
+  size: 408, 204
+  orig: 408, 204
+  offset: 0, 0
+  index: -1
+Hammer_Glow
+  rotate: true
+  xy: 2, 32
+  size: 448, 244
+  orig: 448, 244
+  offset: 0, 0
+  index: -1
+Scale_Mid
+  rotate: true
+  xy: 73, 13
+  size: 17, 386
+  orig: 17, 386
+  offset: 0, 0
+  index: -1
+Scale_Round_bottom
+  rotate: true
+  xy: 248, 53
+  size: 17, 14
+  orig: 17, 14
+  offset: 0, 0
+  index: -1
+Scale_Round_top
+  rotate: true
+  xy: 248, 35
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: true
+  xy: 959, 6
+  size: 138, 127
+  orig: 138, 127
+  offset: 0, 0
+  index: -1
+arrowLight
+  rotate: true
+  xy: 1088, 6
+  size: 138, 127
+  orig: 138, 127
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 913, 348
+  size: 348, 132
+  orig: 348, 132
+  offset: 0, 0
+  index: -1
+lightRound
+  rotate: false
+  xy: 1217, 86
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+movementFX2
+  rotate: true
+  xy: 454, 80
+  size: 400, 390
+  orig: 400, 390
+  offset: 0, 0
+  index: -1
+ring
+  rotate: false
+  xy: 1108, 149
+  size: 117, 57
+  orig: 117, 57
+  offset: 0, 0
+  index: -1
+ring2
+  rotate: false
+  xy: 906, 81
+  size: 51, 63
+  orig: 51, 63
+  offset: 0, 0
+  index: -1
+scalePointer
+  rotate: false
+  xy: 2, 6
+  size: 46, 24
+  orig: 46, 24
+  offset: 0, 0
+  index: -1
+stars/02_00040
+  rotate: false
+  xy: 73, 3
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
+stars/02_00041
+  rotate: false
+  xy: 73, 3
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
+stars/02_00042
+  rotate: false
+  xy: 50, 8
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00043
+  rotate: false
+  xy: 50, 8
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00044
+  rotate: false
+  xy: 50, 8
+  size: 21, 22
+  orig: 21, 22
+  offset: 0, 0
+  index: -1
+stars/02_00045
+  rotate: true
+  xy: 1227, 159
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+stars/02_00046
+  rotate: true
+  xy: 1227, 159
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
+stars/02_00047
+  rotate: true
+  xy: 1217, 281
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00048
+  rotate: true
+  xy: 1217, 281
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00049
+  rotate: true
+  xy: 1217, 281
+  size: 65, 66
+  orig: 65, 66
+  offset: 0, 0
+  index: -1
+stars/02_00050
+  rotate: false
+  xy: 840, 6
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00051
+  rotate: false
+  xy: 840, 6
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00052
+  rotate: true
+  xy: 1210, 208
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00053
+  rotate: true
+  xy: 1210, 208
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+stars/02_00054
+  rotate: true
+  xy: 1210, 208
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1

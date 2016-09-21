@@ -1,25 +1,26 @@
 let spine = {};
 
-spine.Atlas = function(atlasText) {
+spine.Atlas = function (atlasText) {
   this.pages = [];
   this.regions = [];
 
-  var reader = new spine.AtlasReader(atlasText);
-  var tuple = [];
+  let reader = new spine.AtlasReader(atlasText);
+  let tuple = [];
   tuple.length = 4;
-  var page = null;
-  while(true) {
-    var line = reader.readLine();
-    if(line === null)
+  let page = null;
+  while (true) {
+    let line = reader.readLine();
+    if (line === null) {
       break;
+    }
     line = reader.trim(line);
-    if(!line.length)
+    if (!line.length) {
       page = null;
-    else if(!page) {
+    } else if (!page) {
       page = new spine.AtlasPage();
       page.name = line;
 
-      if(reader.readTuple(tuple) == 2) { // size is only optional for an atlas packed with an old TexturePacker.
+      if (reader.readTuple(tuple) === 2) { // size is only optional for an atlas packed with an old TexturePacker.
         page.width = parseInt(tuple[0]);
         page.height = parseInt(tuple[1]);
         reader.readTuple(tuple);
@@ -30,36 +31,36 @@ spine.Atlas = function(atlasText) {
       page.minFilter = spine.Atlas.TextureFilter[tuple[0]];
       page.magFilter = spine.Atlas.TextureFilter[tuple[1]];
 
-      var direction = reader.readValue();
+      let direction = reader.readValue();
       page.uWrap = spine.Atlas.TextureWrap.clampToEdge;
       page.vWrap = spine.Atlas.TextureWrap.clampToEdge;
-      if(direction == "x")
+      if (direction === "x") {
         page.uWrap = spine.Atlas.TextureWrap.repeat;
-      else if(direction == "y")
+      } else if (direction === "y") {
         page.vWrap = spine.Atlas.TextureWrap.repeat;
-      else if(direction == "xy")
+      } else if (direction === "xy") {
         page.uWrap = page.vWrap = spine.Atlas.TextureWrap.repeat;
-
+      }
       this.pages[this.pages.length] = page;
 
     } else {
-      var region = new spine.AtlasRegion();
+      let region = new spine.AtlasRegion();
       region.name = line;
       region.page = page;
 
-      region.rotate = reader.readValue() == "true";
+      region.rotate = reader.readValue() === "true";
 
       reader.readTuple(tuple);
-      var x = parseInt(tuple[0]);
-      var y = parseInt(tuple[1]);
+      let x = parseInt(tuple[0]);
+      let y = parseInt(tuple[1]);
 
       reader.readTuple(tuple);
-      var width = parseInt(tuple[0]);
-      var height = parseInt(tuple[1]);
+      let width = parseInt(tuple[0]);
+      let height = parseInt(tuple[1]);
 
       region.u = x / page.width;
       region.v = y / page.height;
-      if(region.rotate) {
+      if (region.rotate) {
         region.u2 = (x + height) / page.width;
         region.v2 = (y + width) / page.height;
       } else {
@@ -71,10 +72,10 @@ spine.Atlas = function(atlasText) {
       region.width = Math.abs(width);
       region.height = Math.abs(height);
 
-      if(reader.readTuple(tuple) == 4) { // split is optional
+      if (reader.readTuple(tuple) === 4) { // split is optional
         region.splits = [parseInt(tuple[0]), parseInt(tuple[1]), parseInt(tuple[2]), parseInt(tuple[3])];
 
-        if(reader.readTuple(tuple) == 4) { // pad is optional, but only present with splits
+        if (reader.readTuple(tuple) === 4) { // pad is optional, but only present with splits
           region.pads = [parseInt(tuple[0]), parseInt(tuple[1]), parseInt(tuple[2]), parseInt(tuple[3])];
 
           reader.readTuple(tuple);
@@ -96,21 +97,26 @@ spine.Atlas = function(atlasText) {
 };
 
 spine.Atlas.prototype = {
-  findRegion: function(name) {
-    var regions = this.regions;
-    for(var i = 0, n = regions.length; i < n; i++)
-      if(regions[i].name == name) return regions[i];
+  findRegion: function (name) {
+    let regions = this.regions;
+    for (let i = 0, n = regions.length; i < n; i++) {
+      if (regions[i].name === name) {
+        return regions[i];
+      }
+    }
     return null;
   },
 
-  updateUVs: function(page) {
-    var regions = this.regions;
-    for(var i = 0, n = regions.length; i < n; i++) {
-      var region = regions[i];
-      if(region.page != page) continue;
+  updateUVs: function (page) {
+    let regions = this.regions;
+    for (let i = 0, n = regions.length; i < n; i++) {
+      let region = regions[i];
+      if (region.page !== page) {
+        continue;
+      }
       region.u = region.x / page.width;
       region.v = region.y / page.height;
-      if(region.rotate) {
+      if (region.rotate) {
         region.u2 = (region.x + region.height) / page.width;
         region.v2 = (region.y + region.width) / page.height;
       } else {
@@ -147,7 +153,7 @@ spine.Atlas.TextureWrap = {
   repeat: 2
 };
 
-spine.AtlasPage = function() {};
+spine.AtlasPage = function () {};
 spine.AtlasPage.prototype = {
   name: null,
   format: null,
@@ -160,7 +166,7 @@ spine.AtlasPage.prototype = {
   height: 0
 };
 
-spine.AtlasRegion = function() {};
+spine.AtlasRegion = function () {};
 spine.AtlasRegion.prototype = {
   page: null,
   name: null,
@@ -182,34 +188,42 @@ spine.AtlasRegion.prototype = {
   pads: null
 };
 
-spine.AtlasReader = function(text) {
+spine.AtlasReader = function (text) {
   this.lines = text.split(/\r\n|\r|\n/);
 };
 spine.AtlasReader.prototype = {
   index: 0,
-  trim: function(value) {
+  trim: function (value) {
     return value.replace(/^\s+|\s+$/g, "");
   },
-  readLine: function() {
-    if(this.index >= this.lines.length) return null;
+  readLine: function () {
+    if (this.index >= this.lines.length) {
+      return null;
+    }
     return this.lines[this.index++];
   },
-  readValue: function() {
-    var line = this.readLine();
-    var colon = line.indexOf(":");
-    if(colon == -1) throw "Invalid line: " + line;
+  readValue: function () {
+    let line = this.readLine();
+    let colon = line.indexOf(":");
+    if (colon === -1) {
+      throw "Invalid line: " + line;
+    }
     return this.trim(line.substring(colon + 1));
   },
   /** Returns the number of tuple values read (1, 2 or 4). */
-  readTuple: function(tuple) {
-    var line = this.readLine();
-    var colon = line.indexOf(":");
-    if(colon == -1) throw "Invalid line: " + line;
-    var i = 0,
+  readTuple: function (tuple) {
+    let line = this.readLine();
+    let colon = line.indexOf(":");
+    if (colon === -1) {
+      throw "Invalid line: " + line;
+    }
+    let i = 0,
       lastMatch = colon + 1;
-    for(; i < 3; i++) {
-      var comma = line.indexOf(",", lastMatch);
-      if(comma == -1) break;
+    for (; i < 3; i++) {
+      let comma = line.indexOf(",", lastMatch);
+      if (comma === -1) {
+        break;
+      }
       tuple[i] = this.trim(line.substr(lastMatch, comma - lastMatch));
       lastMatch = comma + 1;
     }
@@ -219,7 +233,52 @@ spine.AtlasReader.prototype = {
 };
 
 module.exports = exports = {
-  parse: function(atlasText) {
+
+
+  /**
+   * [parseAtlas description]
+   * @param  {[type]} atlasText [description]
+   * @return
+   *
+    page:{
+      name: 'duck.png',
+      width: 868,
+      height: 150,
+      format: 6,
+      minFilter: undefined,
+      magFilter: undefined,
+      uWrap: 1,
+      vWrap: 1
+    }
+
+    region:{
+      name: 'stars/02_00054',
+      page:
+       { name: 'duck.png',
+         width: 868,
+         height: 150,
+         format: 6,
+         minFilter: undefined,
+         magFilter: undefined,
+         uWrap: 1,
+         vWrap: 1 },
+      rotate: false,
+      u: 0.7868663594470046,
+      v: 0.013333333333333334,
+      u2: 0.868663594470046,
+      v2: 0.49333333333333335,
+      x: 683,
+      y: 2,
+      width: 71,
+      height: 72,
+      originalWidth: 71,
+      originalHeight: 72,
+      offsetX: 0,
+      offsetY: 0,
+      index: -1 }
+
+   */
+  parseAtlas: function (atlasText) {
     let parsedAtlas = new spine.Atlas(atlasText);
     return {
       pages: parsedAtlas.pages,

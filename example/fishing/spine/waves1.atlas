@@ -1,0 +1,20 @@
+
+waves1.png
+size: 1108,225
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Waves1
+  rotate: false
+  xy: 2, 61
+  size: 682, 162
+  orig: 682, 162
+  offset: 0, 0
+  index: -1
+top/Top2
+  rotate: false
+  xy: 686, 2
+  size: 420, 221
+  orig: 420, 221
+  offset: 0, 0
+  index: -1

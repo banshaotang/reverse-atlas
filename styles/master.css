@@ -1,0 +1,8 @@
+/**
+ * 并没有什么卵用
+ */
+.img {
+  display: inline-list-item;
+  float: left;
+  margin: 0 0 1em 1em;
+}
