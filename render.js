@@ -16,9 +16,9 @@ function loadImages(pages, cb) {
     let img = new Image();
     images.set(name, img);
     img.crossOrigin = 'Anonymous';
-    img.onload = function () {
+    img.onload = function() {
       index++;
-      if (index === pages.size) {
+      if(index >= pages.size) {
         cb(images);
       }
     };
@@ -32,13 +32,13 @@ function loadImages(pages, cb) {
 function save(file, canvas, cb) {
   let base64Data = canvas.toDataURL('image/png').replace(/^data:image\/png;base64,/, "");
   let dir = path.parse(file).dir;
-  mkdirp(dir, function (err) {
-    if (err) {
+  mkdirp(dir, function(err) {
+    if(err) {
       console.error(err);
       cb();
     } else {
-      fs.writeFile(file, base64Data, 'base64', function (err) {
-        if (err) {
+      fs.writeFile(file, base64Data, 'base64', function(err) {
+        if(err) {
           console.log("save [%s] error %s", file, err);
         } else {
           console.log("extract ---> ", file);
@@ -64,7 +64,7 @@ function crop(image, region) {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  if (region.rotate) {
+  if(region.rotate) {
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate(Math.PI / 2);
     ctx.drawImage(image, region.x, region.y, region.h, region.w, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
@@ -79,11 +79,11 @@ function parse(src, dest) {
 
   console.log("crop images from %s to %s", src, dest);
 
-  let srcDir = path.parse(src).dir.replace('/**', '');
+  let srcDir = path.parse(src).dir.replace('**', '');
 
-  glob(src, function (err, files) {
+  glob(src, function(err, files) {
 
-    files.forEach(function (file, i) {
+    files.forEach(function(file, i) {
 
       /** path.parse();
       ┌─────────────────────┬────────────┐
@@ -104,13 +104,13 @@ function parse(src, dest) {
 
       async.waterfall([
 
-          function (next) {
+        function(next) {
           loadImages(atlas.pages, (images) => {
             next(null, images);
           });
-          },
+        },
 
-          function (images, next) {
+        function(images, next) {
 
           //get slices from the atlas
           atlas.regions.forEach((region, key) => {
@@ -121,7 +121,8 @@ function parse(src, dest) {
             let canvas = crop(img, region);
 
             //keep sub dir the same as the src.
-            let subDir = parsedPath.dir.replace(srcDir, '');
+            let subDir = path.relative(srcDir, parsedPath.dir);
+            // let subDir = parsedPath.dir.replace(srcDir, '');
 
             let destFile = path.join(dest, subDir, parsedPath.name + '_' + region.name + ".png");
 
@@ -129,19 +130,19 @@ function parse(src, dest) {
 
             save(destFile, canvas, () => {
               index++;
-              if (index === atlas.regions.size) {
+              if(index >= atlas.regions.size) {
                 next(null);
               }
             });
 
           });
-          },
+        },
 
-          function (next) {
+        function(next) {
           console.log("----------------------------------------");
           next(null);
-          }
-      ], function (err) {});
+        }
+      ], function(err) {});
     });
   });
 }
