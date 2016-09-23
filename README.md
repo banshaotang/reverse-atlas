@@ -30,8 +30,11 @@ npm install && npm start
 ```
 
 ### Quick start
+![ui](./screenshot/ui.png)
 * Fill the `src` folder and `dest` fold then click `start` button.
 * `src` must be `glob` path style.
+
+  example:`/your/path/example/**/[^~$]*.atlas`
 
 
 ### How
