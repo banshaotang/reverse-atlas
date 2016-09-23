@@ -3,7 +3,7 @@
  *
  * datax format:{
  *    page:{name:'',ext:'.png',dir:''}
- *    region:{name:'',page:'',x:0,y:0,w:0,h:0}
+ *    region:{name:'',page:'',rotate:false,x:0,y:0,w:0,h:0}
  *  }
  */
 
@@ -59,10 +59,11 @@ function loadSpine(file) {
     result.regions.set(name, {
       name: name,
       page: region.page.name,
+      rotate: region.rotate,
       x: region.x,
       y: region.y,
-      w: region.rotate ? region.height : region.width,
-      h: region.rotate ? region.width : region.height
+      w: region.width,
+      h: region.height
     });
   });
 

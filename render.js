@@ -52,11 +52,26 @@ function save(file, canvas, cb) {
 
 function crop(image, region) {
   let canvas = document.createElement('canvas');
+
+  // let rotate = region.rotate;
+  // let width = rotate ? region.h : region.w;
+  // let height = rotate ? region.w : region.h;
+
   canvas.width = region.w;
   canvas.height = region.h;
+
   let ctx = canvas.getContext('2d');
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(image, region.x, region.y, region.w, region.h, 0, 0, region.w, region.h);
+
+  if (region.rotate) {
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(Math.PI / 2);
+    ctx.drawImage(image, region.x, region.y, region.h, region.w, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+  } else {
+    ctx.drawImage(image, region.x, region.y, region.w, region.h, 0, 0, region.w, region.h);
+  }
+
   return canvas;
 }
 
